@@ -37,6 +37,9 @@ public class Movie implements Serializable {
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "movie")
+	private List<Review> reviews = new ArrayList<>();
 	
 	public Movie() {}
 
@@ -106,6 +109,9 @@ public class Movie implements Serializable {
 		this.genre = genre;
 	}
 
+	public List<Review> getReviews() {
+		return reviews;
+	}
 
 	@Override
 	public int hashCode() {
