@@ -24,6 +24,9 @@ public class Genre implements Serializable {
 	private Long id;
 	private String name;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "genre")
+	private List<Movie> movies = new ArrayList<>();
 	
 	public Genre() {}
 
@@ -48,6 +51,9 @@ public class Genre implements Serializable {
 		this.name = name;
 	}
 
+	public List<Movie> getMovies() {
+		return movies;
+	}
 
 	@Override
 	public int hashCode() {
@@ -75,4 +81,3 @@ public class Genre implements Serializable {
 	}
 
 }
-
