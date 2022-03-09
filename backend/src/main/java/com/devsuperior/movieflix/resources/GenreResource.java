@@ -19,7 +19,7 @@ public class GenreResource {
 	public ResponseEntity<List<Genre>> findAll() {
 		List<Genre> list = new ArrayList<>();
 		list.add(new Genre(1L, "Terror"));
-		list.add(new Genre(1L, "Romance"));
+		list.add(new Genre(2L, "Romance"));
 		return ResponseEntity.ok().body(list);
 	}
 }
