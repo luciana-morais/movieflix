@@ -8,23 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsuperior.movieflix.entities.Movie;
-import com.devsuperior.movieflix.services.MovieService;
-
+import com.devsuperior.movieflix.entities.Review;
+import com.devsuperior.movieflix.services.ReviewService;
 
 @RestController
-@RequestMapping(value = "/movies")
-public class MovieResource {
+@RequestMapping(value = "/reviews")
+public class ReviewResource {
 	
 	@Autowired
-	public MovieService service;
+	public ReviewService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Movie>> findAll() {
-		List<Movie> list = service.findAll();
+	public ResponseEntity<List<Review>> findAll() {
+		List<Review> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
-	}
-	
-
+}
