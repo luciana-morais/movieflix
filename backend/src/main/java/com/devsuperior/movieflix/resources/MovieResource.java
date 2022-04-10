@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsuperior.movieflix.entities.Movie;
+import com.devsuperior.movieflix.dto.MovieDTO;
 import com.devsuperior.movieflix.services.MovieService;
 
 
@@ -20,11 +20,11 @@ public class MovieResource {
 	public MovieService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Movie>> findAll() {
-		List<Movie> list = service.findAll();
+	public ResponseEntity<List<MovieDTO>> findAll() {
+		List<MovieDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	}
+}
 	
 

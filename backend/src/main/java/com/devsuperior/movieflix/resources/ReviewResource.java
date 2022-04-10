@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsuperior.movieflix.entities.Review;
+import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.services.ReviewService;
 
 @RestController
@@ -19,8 +19,8 @@ public class ReviewResource {
 	public ReviewService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Review>> findAll() {
-		List<Review> list = service.findAll();
+	public ResponseEntity<List<ReviewDTO>> findAll() {
+		List<ReviewDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 }
