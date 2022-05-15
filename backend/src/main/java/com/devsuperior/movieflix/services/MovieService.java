@@ -1,12 +1,13 @@
 package com.devsuperior.movieflix.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.movieflix.dto.MovieDTO;
 import com.devsuperior.movieflix.entities.Movie;
@@ -19,9 +20,16 @@ public class MovieService {
 	@Autowired
 	private MovieRepository repository;
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<MovieDTO> findAll() {
 		List<Movie> movies = repository.findAll();
 		return movies.stream().map(movie -> new MovieDTO(movie)).collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly = true)
+	public MovieDTO findById(Long id) {
+		Optional<Movie> obj = repository.findById(id);
+		Movie entity = obj.get();
+		return new MovieDTO(entity);
 	}
 }
