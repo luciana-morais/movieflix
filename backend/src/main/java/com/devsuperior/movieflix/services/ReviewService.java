@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.entities.Review;
 import com.devsuperior.movieflix.repositories.ReviewRepository;
+import com.devsuperior.movieflix.services.exceptions.EntityNotFoundException;
 
 @Service
 public class ReviewService {
@@ -27,7 +28,7 @@ public class ReviewService {
 	@Transactional(readOnly = true)
 	public ReviewDTO findById(Long id) {
 		Optional<Review> obj = repository.findById(id);
-		Review entity = obj.get();
+		Review entity = obj.orElseThrow(() -> new EntityNotFoundException("Entity not found."));
 		return new ReviewDTO(entity);
 	}
 }
